@@ -62,13 +62,13 @@ const UICtrl = (function () {
 
       if (species === 'Pigeon') {
         fact = dino.getFact()
+      } else {
+        const getRandomFact = dino.getRandomInfo()
+        fact = getRandomFact.length // returns number of arguments
+          ? getRandomFact.call(dino, human)
+          : getRandomFact.call(dino)
       }
-      // else {
-      //   const getRandomFact = dino.getRandomInfo()
-      //   fact.innerHTML = getRandomFact.length
-      //     ? getRandomFact.call(dino, human)
-      //     : getRandomFact.call(dino)
-      // }
+
       return `<div class="grid-item"><h3>${species}</h3><img src="./images/${image}.png" alt="Dino" /><p>${fact}</p></div>`
     },
     createHumanItem: function (human) {
@@ -116,7 +116,7 @@ const App = (function (DinoCtrl, HumanCtrl, UICtrl) {
     // Clear  and remove form
     // UICtrl.clearForm()
     UICtrl.removeForm()
-    UICtrl.showResults(shuffle(appData.dinos), appData.user)
+    UICtrl.showResults(lib.shuffle(appData.dinos), appData.user)
     e.preventDefault()
   }
 
@@ -139,27 +139,24 @@ const App = (function (DinoCtrl, HumanCtrl, UICtrl) {
   }
 })(DinoCtrl, HumanCtrl, UICtrl)
 
+const lib = {
+  heightInFeetAndInches(height) {
+    const feet = Math.floor(height / 12)
+    const inches = height % 12
+
+    let str = feet
+      ? inches
+        ? `${feet} feet and ${inches} inches`
+        : `${feet} feet`
+      : `${inches} inches`
+
+    return str
+  },
+
+  // Reference: https://flaviocopes.com/how-to-shuffle-array-javascript/
+  shuffle(list) {
+    return list.sort(() => Math.random() - 0.5)
+  },
+}
+
 App.init()
-
-// Create Dino Objects
-
-// Create Human Object
-
-// Use IIFE to get human data from form
-
-// Create Dino Compare Method 1
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Create Dino Compare Method 2
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Create Dino Compare Method 3
-// NOTE: Weight in JSON file is in lbs, height in inches.
-
-// Generate Tiles for each Dino in Array
-
-// Add tiles to DOM
-
-// Remove form from screen
-
-// On button click, prepare and display infographic
