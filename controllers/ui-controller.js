@@ -16,7 +16,9 @@ const UICtrl = (function () {
       return {
         name: document.querySelector(UISelectors.name).value,
         feet: parseInt(document.querySelector(UISelectors.feet).value),
-        inches: parseInt(document.querySelector(UISelectors.inches).value),
+        inches: document.querySelector(UISelectors.inches).value
+          ? parseInt(document.querySelector(UISelectors.inches).value)
+          : 0,
         weight: parseInt(document.querySelector(UISelectors.weight).value),
         diet: document.querySelector(UISelectors.diet).value,
       }

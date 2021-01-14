@@ -30,6 +30,12 @@ Dino.prototype.getTimelineFact = function () {
 }
 
 Dino.prototype.heightComparisonFact = function (human) {
+  if (!human.getHeight()) {
+    return `${this._species} was ${lib.heightInFeetAndInches(
+      this._height,
+    )} tall.`
+  }
+
   let str
   let heightIndex
   if (this._height > human.getHeight()) {
@@ -51,7 +57,21 @@ Dino.prototype.heightComparisonFact = function (human) {
   return str
 }
 
+Dino.prototype.dietComparisonFact = function (human) {
+  if (this._diet === human.getDiet().toLowerCase()) {
+    return `${this._species} and you both enjoy ${this._diet} diet.`
+  }
+
+  return `${this._species} enjoyed ${
+    this._diet
+  } diet. However, you prefer ${human.getDiet().toLowerCase()} diet.`
+}
+
 Dino.prototype.weigtComparisonFact = function (human) {
+  if (!human.getWeight()) {
+    return `${this._species} weighed ${this._weight.toLocaleString()} pounds!`
+  }
+
   let str
   let weightIndex
   if (this._weight > human.getWeight()) {
