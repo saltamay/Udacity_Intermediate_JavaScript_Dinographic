@@ -1,4 +1,26 @@
 // Create Dino Constructor
+'use strict'
+
+const App = (function (model = null, view = null, controller = null) {
+  // console.log(data)
+  // console.log(Model.getDinos())
+
+  return {
+    init: function () {
+      // Data
+      // Create Dino Object Instances
+      const dinos = data.map(function (dino) {
+        const { species, weight, height, diet, where, when, fact } = dino
+        return new Dino(species, weight, height, diet, where, when, fact)
+      })
+      console.log('Starting...')
+      console.log(dinos)
+    },
+  }
+})()
+
+App.init()
+
 // Create Dino Objects
 
 // Create Human Object
