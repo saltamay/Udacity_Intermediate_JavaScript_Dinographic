@@ -22,7 +22,7 @@ Dino.prototype.getFact = function () {
 }
 
 Dino.prototype.getLocationFact = function () {
-  return `${this._species} lived in ${this.location}.`
+  return `${this._species} lived in ${this._location}.`
 }
 
 Dino.prototype.getTimelineFact = function () {
