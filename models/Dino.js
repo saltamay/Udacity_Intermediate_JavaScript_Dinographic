@@ -91,6 +91,10 @@ Dino.prototype.weigtComparisonFact = function (human) {
   return str
 }
 
+/*
+  Generate random fact by randomly selecting methods that return
+  facts or comparisons
+*/
 Dino.prototype.methodsCollection = []
 
 Dino.prototype.populateMethodsCollection = function () {
